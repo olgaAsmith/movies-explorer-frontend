@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #202020;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    font-weight: 400;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }

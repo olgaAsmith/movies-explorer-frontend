@@ -1,0 +1,24 @@
+.promo {
+  background-color: #073042;
+  padding: 50px 0 60px 0;
+}
+
+.promo__container {
+  width: calc(100% - 140px);
+  margin: auto;
+}
+
+.promo__title {
+  width: 626px;
+  font-size: 40px;
+  line-height: 52px;
+  margin: 0;
+}
+
+.promo__image {
+  background-image: url(../../../images/decor.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 244px;
+  margin-top: 102px;
+}

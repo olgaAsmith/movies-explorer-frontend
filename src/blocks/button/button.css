@@ -1,0 +1,10 @@
+.button {
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 3px;
+    transition: opacity .3s;
+}
+
+.button:hover {
+    opacity: .6;
+}
