@@ -1,20 +1,64 @@
 .about-me {
   width: calc(100% - 140px);
   margin: auto;
-  padding: 100px 0 110px;
+  padding: 100px 0;
+}
+
+@media screen and (max-width: 768px){
+  .about-me {
+    width: calc(100% - 100px);
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .about-me {
+    width: calc(100% - 28px);
+    padding: 80px 0 65px;
+  }
 }
 
 .about-me__block {
   display: grid;
-  grid-template-columns: 600px 270px;
+  grid-template-columns: 600px min-content;
   justify-content: space-between;
   margin-top: 66px;
+}
+
+@media screen and (max-width: 1080px){
+  .about-me__block {
+    grid-template-columns: minmax(280px, 570px) min-content;
+    column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .about-me__block {
+    grid-template-columns: 1fr;
+    margin-top: 60px;
+  }
 }
 
 .about-me__photo {
   width: 270px;
   height: 327px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1080px){
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .about-me__photo {
+    width: 292px;
+    height: 352px;
+    margin: auto;
+    order: -1;
+  }
 }
 
 .about-me__describe {
@@ -28,6 +72,22 @@
   letter-spacing: -2px;
 }
 
+@media screen and (max-width: 768px){
+  .about-me__title-name {
+    font-size: 40px;
+    line-height: 40px; /* 100% */
+    letter-spacing: -1.6px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .about-me__title-name {
+    font-size: 30px;
+    letter-spacing: -1.2px;
+    margin-top: 40px;
+  }
+}
+
 .about-me__title-info {
   font-size: 18px;
   font-weight: 500;
@@ -35,9 +95,40 @@
   margin-top: 18px;
 }
 
+@media screen and (max-width: 768px){
+  .about-me__title-info {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .about-me__title-info {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 20px;
+  }
+}
+
 .about-me__title-essey {
   line-height: 22px;
   margin-top: 26px;
+}
+
+@media screen and (max-width: 768px){
+  .about-me__title-essey {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  .about-me__title-essey {
+    font-size: 11px;
+    line-height: 16px;
+  }
 }
 
 .about-me__link {
@@ -45,4 +136,16 @@
   font-size: 14px;
   line-height: normal;
   margin-top: 99px;
+}
+
+@media screen and (max-width: 768px){
+  .about-me__link {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .about-me__link {
+    margin-top: 40px;
+  }
 }

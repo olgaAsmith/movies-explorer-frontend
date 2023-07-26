@@ -3,3 +3,9 @@
   height: 1px;
   margin-top: 23px;
 }
+
+@media screen and (max-width: 480px){
+  .border {
+    margin-top: 28px;
+  }
+}

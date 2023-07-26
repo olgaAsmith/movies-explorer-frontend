@@ -7,5 +7,10 @@
 }
 
 .link:hover {
-    opacity: .6;
+  opacity: .699999988079071;
+}
+
+.link:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #3DDC84;
 }

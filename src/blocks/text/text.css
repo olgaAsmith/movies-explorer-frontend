@@ -2,3 +2,16 @@
   font-size: 14px;
   margin: 0;
 }
+
+@media screen and (max-width: 768px){
+  .text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

@@ -1,16 +1,23 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
+import "./Header.css";
+import { useLocation, Link } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header(props) {
+  const location = useLocation();
+
   return (
-    <header className="header header_main">
-      <div className="header__container">
-        <a className="logo link header__logo" href='#!'> </a>
-      <div className="header__block-auth">
-        <a className='link header__signup' href='#!'>Регистрация</a>
-        <a className='button button_green header__button-signin' href='#!'>Войти</a>
-      </div>
-      </div>
+    <header
+      className={`${
+        location.pathname === "/movies" ||
+        location.pathname === "/saved-movies" ||
+        location.pathname === "/profile" ||
+        location.pathname === "/"
+          ? `header ${location.pathname === "/" ? "header_main" : ""}`
+          : "header_invisible"
+      }`}
+    >
+      <Navigation {...props} />
     </header>
   );
 }

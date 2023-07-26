@@ -1,0 +1,134 @@
+.auth {
+  width: 396px;
+  margin: auto;
+  padding: 70px 0;
+}
+
+@media screen and (max-width: 768px){
+  .auth {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .auth {
+    width: calc(100% - 60px);
+    padding-top: 56px;
+    padding-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .auth__logo_center {
+    margin: auto;
+  }
+}
+
+.auth__title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 540px){
+  .auth__title {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
+.auth__input-info {
+  color: #8B8B8B;
+  font-size: 10px;
+  margin: 20px 0 10px;
+}
+
+.auth__input-info:first-child {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 540px){
+  .auth__input-info:first-child {
+    margin-top: 80px;
+  }
+}
+
+.auth__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  background: #2F2F2F;
+  border: none;
+  color: #FFF;
+  font-size: 13px;
+  padding: 0 15px;
+}
+
+.auth__input-error {
+  color: #EE3465;
+  font-family: Inter;
+  font-size: 10px;
+  padding-top: 10px;
+}
+
+.auth__button {
+  margin-top: 91px;
+}
+
+@media screen and (max-width: 768px){
+  .auth__button {
+    margin-top: 69px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .auth__button {
+    font-size: 12px;
+    margin-top: 157px;
+  }
+}
+
+.auth__footer {
+  display: flex;
+  justify-content: center;
+  color: #8B8B8B;
+  margin-top: 16px;
+}
+
+@media screen and (max-width: 768px){
+  .auth__footer {
+  }
+}
+
+@media screen and (max-width: 540px){
+  .auth__footer {
+    margin-top: 14px;
+  }
+}
+
+.auth__footer-text {
+  font-size: 14px;
+  margin: 0;
+}
+
+@media screen and (max-width: 540px){
+  .auth__footer-text {
+    font-size: 12px;
+  }
+}
+
+.auth__link {
+  color: #4285F4;
+  font-size: 14px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 540px){
+  .auth__link {
+    font-size: 12px;
+    margin-left: 7px;
+  }
+}
