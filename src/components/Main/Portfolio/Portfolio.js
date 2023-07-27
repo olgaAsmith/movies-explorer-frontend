@@ -8,44 +8,39 @@ function Portfolio() {
       <h2 className="title portfolio__title">Портфолио</h2>
       <ul className="portfolio__list">
         <li className="portfolio__list-item">
-          <div className="portfolio__list_item_container">
+          <Link
+            className="link portfolio__list_item_container"
+            to="https://olgaasmith.github.io/how-to-learn/"
+            target="_blank"
+          >
             <p className="text portfolio__list-item-name">Статичный сайт</p>
-            <Link
-              to="https://olgaasmith.github.io/how-to-learn/"
-              className="link portfolio__list-item-link"
-              target="_blank"
-            >
-              {" "}
-            </Link>
-          </div>
+            <div className="link portfolio__list-item-link"></div>
+          </Link>
           <div className="border border_grey portfolio__border"></div>
         </li>
         <li className="portfolio__list-item">
-          <div className="portfolio__list_item_container">
+          <Link
+            className="link portfolio__list_item_container"
+            to="https://olgaasmith.github.io/russian-travel/"
+            target="_blank"
+          >
             <p className="text portfolio__list-item-name">Адаптивный сайт</p>
-            <Link
-              to="https://olgaasmith.github.io/russian-travel/"
-              className="link portfolio__list-item-link"
-              target="_blank"
-            >
-              {" "}
-            </Link>
-          </div>
+            <div className="link portfolio__list-item-link"></div>
+          </Link>
           <div className="border border_grey portfolio__border"></div>
         </li>
         <li className="portfolio__list-item">
-          <div className="portfolio__list_item_container">
+          <Link
+            className="link portfolio__list_item_container"
+            to="https://olgaasmith.github.io/mesto-react/"
+            target="_blank"
+          >
             <p className="text portfolio__list-item-name">
               Одностраничное приложение
             </p>
-            <Link
-              to="https://olgaasmith.github.io/mesto-react/"
-              className="link portfolio__list-item-link"
-              target="_blank"
-            >
-              {" "}
-            </Link>
-          </div>
+            <div className="link portfolio__list-item-link"></div>
+          </Link>
+          <div className="border border_grey portfolio__border"></div>
         </li>
       </ul>
     </section>
