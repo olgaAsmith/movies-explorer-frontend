@@ -7,11 +7,11 @@ function Footer() {
 
   return (
     <footer
-      className={`${
+      className={`footer ${
         location.pathname === "/movies" ||
         location.pathname === "/saved-movies" ||
         location.pathname === "/"
-          ? "footer"
+          ? ""
           : "footer_invisible"
       }`}
     >

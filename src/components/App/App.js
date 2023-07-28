@@ -16,7 +16,7 @@ import { Routes, Route } from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 
 function App() {
-  const [isLogIn, SetIsLogIn] = useState(false);
+  const [isLogIn, SetIsLogIn] = useState(true);
   const [isMovieSaved, SetIsMovieSaved] = useState(false);
   const [movies, setMovies] = useState([]);
   const [isBurgerMenuOpen, SetIsBurgerMenuOpen] = useState(false);
