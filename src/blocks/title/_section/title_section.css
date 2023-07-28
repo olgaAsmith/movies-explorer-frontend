@@ -1,0 +1,11 @@
+.title_section {
+  font-size: 22px;
+  letter-spacing: -0.88px;
+}
+
+@media screen and (max-width: 480px){
+  .title_section {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+}

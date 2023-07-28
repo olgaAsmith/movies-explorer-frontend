@@ -1,0 +1,9 @@
+.auth__button_signin {
+  margin-top: 179px;
+}
+
+@media screen and (max-width: 540px){
+  .auth__button_signin {
+    margin-top: 267px;
+  }
+}

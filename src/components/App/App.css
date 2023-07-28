@@ -1,0 +1,16 @@
+body {
+    background-color: #202020;
+  }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Arial', sans-serif;
+  color: #FFFFFF;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
