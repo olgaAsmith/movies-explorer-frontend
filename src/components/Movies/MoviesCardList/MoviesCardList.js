@@ -5,17 +5,31 @@ import { useLocation } from "react-router-dom";
 
 function MoviesCardList(props) {
   const location = useLocation();
-
+  const movies = props.movies;
   return (
     <section className="movies-cards">
-      <MoviesCard isSaved={props.isSaved} />
+      <ul className="movies-card__list">
+        {movies.map(({ ...movie }) => {
+          return (
+            <MoviesCard
+              key={movie.id || movie._id}
+              {...movie}
+              userMovieList={props.userMovieList}
+              saveMovie={props.saveMovie}
+              deleteMovie={props.deleteMovie}
+            />
+          );
+        })}
+      </ul>
       <button
         className={`button ${
-          location.pathname === "/saved-movies"
-            ? "button_invisible movies-cards__without-add"
+          location.pathname === "/saved-movies" ||
+          movies.length >= props.moviesLength
+            ? "button_invisible"
             : "movies-cards__add-more-movies"
         }`}
         type="button"
+        onClick={props.clickOnMoreMovies}
       >
         Ещё
       </button>

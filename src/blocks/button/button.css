@@ -12,8 +12,3 @@
 .button:hover {
    opacity: .800000011920929;
 }
-
-.button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #3DDC84;
-}

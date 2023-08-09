@@ -4,8 +4,6 @@ import { useLocation, Link, NavLink } from "react-router-dom";
 
 function Navigation(props) {
   const location = useLocation();
-  const handleCurrentLink = (isActive) =>
-    isActive ? "header__menu-link_active" : "";
 
   return (
     <div className="header__menu">

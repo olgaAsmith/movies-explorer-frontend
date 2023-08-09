@@ -11,13 +11,13 @@ function InfoPopup(props) {
         <div className="popup__min-container">
           <div
             className={`popup__image
-    ${props.isSuccess ? "popup__image_success" : "popup__image_error"}`}
+    ${
+      props.isSuccessfullOperation
+        ? "popup__image_success"
+        : "popup__image_error"
+    }`}
           ></div>
-          <p className="popup__text">
-            {props.isSuccessfullOperation
-              ? "Поздравляем! Все прошло успешно!"
-              : "К сожалению, возникла непредвиденная ошибка"}
-          </p>
+          <p className="popup__text">{props.infoPopupText}</p>
         </div>
         <button
           className="button popup__close-button "

@@ -3,7 +3,3 @@
   opacity: .699999988079071;
 }
 
-.input:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px #3DDC84;
-}
