@@ -40,19 +40,19 @@ export const authorize = (email, password) => {
 
 export const checkToken = () => {
   return fetch(`${hostURL}/users/me`, {
-    method: "GET",
+    method: 'GET',
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include",
+    credentials: 'include',
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .catch((err) => console.log(err));
-};
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+  .catch(err => console.log(err))
+}
 
 export const logout = () => {
   return fetch(`${hostURL}/signout`, {

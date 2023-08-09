@@ -239,8 +239,8 @@ function App() {
             element={
               <ProtectedRoute
                 element={Movies}
+                isLogIn={isLogIn}
                 movies={movies}
-                setMovies={setMovies}
                 numberOfMovies={numberOfMovies}
                 clickOnMoreMovies={clickOnMoreMovies}
                 saveMovie={(movie) => {
@@ -251,10 +251,12 @@ function App() {
                 }}
                 userMovieList={userMovieList}
                 moviesLength={moviesLength}
-                setMoviesLength={setMoviesLength}
                 handleInfoPopup={handleInfoPopup}
                 SetInfoPopupText={SetInfoPopupText}
+                setMovies={setMovies}
+                setUserMovieList={setUserMovieList}
                 serverMovies={serverMovies}
+                setMoviesLength={setMoviesLength}
                 getError={getError}
               />
             }
@@ -264,13 +266,14 @@ function App() {
             element={
               <ProtectedRoute
                 element={SavedMovies}
+                isLogIn={isLogIn}
                 movies={userMovieList}
-                setUserMovieList={setUserMovieList}
                 clickOnMoreMovies={clickOnMoreMovies}
                 deleteMovie={(movie) => {
                   deleteMovie(movie);
                 }}
                 userMovieList={userMovieList}
+                setUserMovieList={setUserMovieList}
               />
             }
           />
@@ -279,6 +282,7 @@ function App() {
             element={
               <ProtectedRoute
                 element={Profile}
+                isLogIn={isLogIn}
                 handleSignout={handleSignout}
                 editUserInfo={editUserInfo}
               />
@@ -293,7 +297,6 @@ function App() {
                 <Register
                   SetInfoPopupText={SetInfoPopupText}
                   handleInfoPopup={handleInfoPopup}
-                  handleSignin={handleSignin}
                 />
               )
             }
