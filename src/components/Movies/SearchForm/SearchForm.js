@@ -7,7 +7,7 @@ function SearchForm(props) {
   const location = useLocation();
   const searchInput = props.searchInput;
   const isChecked = props.isChecked;
-  
+
   //& submit user movies
   const handleSubmitSavedMovies = (event) => {
     event.preventDefault();

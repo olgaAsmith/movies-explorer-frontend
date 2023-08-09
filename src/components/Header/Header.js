@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
 function Header(props) {

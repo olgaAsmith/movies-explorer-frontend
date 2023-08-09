@@ -35,7 +35,6 @@ function Profile(props) {
     props.editUserInfo(name, email);
     SetIsInputChanged(false);
     SetIsEdit(false);
-
   };
 
   const handleChangeInputs = () => {

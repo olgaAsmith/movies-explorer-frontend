@@ -1,7 +1,6 @@
 import React from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 function MoviesCard(props) {
   const location = useLocation();
