@@ -9,10 +9,11 @@ export const registration = (name, email, password) => {
     credentials: "include",
     body: JSON.stringify({ name, email, password }),
   })
+    .then((response) => {
+      return response.json();
+    })
     .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      return res;
     })
     .catch((err) => console.log(err));
 };

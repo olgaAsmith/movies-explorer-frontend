@@ -30,7 +30,7 @@ function Register(props) {
       formValues.accountPassword,
     )
       .then((res) => {
-        if (!res.message) {
+        if (!res) {
           props.handleInfoPopup(true);
           props.SetInfoPopupText("Регистрация прошла успешно!");
         } else if (

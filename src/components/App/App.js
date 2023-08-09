@@ -297,6 +297,7 @@ function App() {
                 <Register
                   SetInfoPopupText={SetInfoPopupText}
                   handleInfoPopup={handleInfoPopup}
+                  handleSignin={handleSignin}
                 />
               )
             }
