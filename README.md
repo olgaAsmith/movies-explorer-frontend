@@ -10,4 +10,4 @@
 **http://moviepoisk.nomoredomains.xyz**
 
 **Ссылка на пул реквест:**
-****
+**https://github.com/olgaAsmith/movies-explorer-frontend/pull/2**
