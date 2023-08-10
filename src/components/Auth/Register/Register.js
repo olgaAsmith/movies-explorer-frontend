@@ -31,25 +31,23 @@ function Register(props) {
     )
       .then((res) => {
         if (!res.message) {
-
-          console.log(formValues.accountEmail);
           authorize(formValues.accountEmail, formValues.accountPassword)
-          .then(() => {
-            navigate("/movies", { replace: true });
-            props.handleInfoPopup(true);
-            props.SetInfoPopupText("Регистрация прошла успешно!");
-            props.handleSignin();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-          } else if (
-            res.message === "Пользователь с такими данными уже существует"
-            ) {
-              props.handleInfoPopup(false);
-              props.SetInfoPopupText("Пользователь с таким email уже существует");
-            }
-            setIsValid(true);
+            .then(() => {
+              navigate("/movies", { replace: true });
+              props.handleInfoPopup(true);
+              props.SetInfoPopupText("Регистрация прошла успешно!");
+              props.handleSignin();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else if (
+          res.message === "Пользователь с такими данными уже существует"
+        ) {
+          props.handleInfoPopup(false);
+          props.SetInfoPopupText("Пользователь с таким email уже существует");
+        }
+        setIsValid(true);
       })
       .catch((error) => {
         console.log(error);

@@ -27,35 +27,33 @@ export const authorize = (email, password) => {
     credentials: "include",
     body: JSON.stringify({ email, password }),
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error("Ошибка авторизации");
-    }
-  })
-  .catch((err) => {
-    throw err;
-  });
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error("Ошибка авторизации");
+      }
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const checkToken = () => {
   return fetch(`${hostURL}/users/me`, {
-    method: 'GET',
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
   })
-  .then((res) => {
-  console.log(res.ok);
-    if (res.ok) {
-
-      return res.json();
-    }
-  })
-  .catch(err => console.log(err))
-}
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .catch((err) => console.log(err));
+};
 
 export const logout = () => {
   return fetch(`${hostURL}/signout`, {

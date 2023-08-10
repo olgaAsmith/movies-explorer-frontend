@@ -94,7 +94,6 @@ function App() {
 
   //* user edit
   const editUserInfo = (name, email) => {
-    console.log(name, email);
     api
       .editUserData(name, email)
       .then((data) => {
