@@ -30,26 +30,26 @@ function Register(props) {
       formValues.accountPassword,
     )
       .then((res) => {
-        if (!res) {
-          props.handleInfoPopup(true);
-          props.SetInfoPopupText("Регистрация прошла успешно!");
-        } else if (
-          res.message === "Пользователь с такими данными уже существует"
-        ) {
-          props.handleInfoPopup(false);
-          props.SetInfoPopupText("Пользователь с таким email уже существует");
-        }
-        authorize(formValues.accountEmail, formValues.accountPassword)
+        if (!res.message) {
+
+          console.log(formValues.accountEmail);
+          authorize(formValues.accountEmail, formValues.accountPassword)
           .then(() => {
-            props.handleSignin();
             navigate("/movies", { replace: true });
+            props.handleInfoPopup(true);
+            props.SetInfoPopupText("Регистрация прошла успешно!");
+            props.handleSignin();
           })
           .catch((error) => {
             console.log(error);
-            props.SetInfoPopupText("При авторизации произошла ошибка");
-            props.handleInfoPopup(false);
           });
-        setIsValid(true);
+          } else if (
+            res.message === "Пользователь с такими данными уже существует"
+            ) {
+              props.handleInfoPopup(false);
+              props.SetInfoPopupText("Пользователь с таким email уже существует");
+            }
+            setIsValid(true);
       })
       .catch((error) => {
         console.log(error);

@@ -27,16 +27,16 @@ export const authorize = (email, password) => {
     credentials: "include",
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error("Ошибка авторизации"); // Ошибка в случае неправильного логина/пароля
-      }
-    })
-    .catch((err) => {
-      throw err;
-    });
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Ошибка авторизации");
+    }
+  })
+  .catch((err) => {
+    throw err;
+  });
 };
 
 export const checkToken = () => {
@@ -48,7 +48,9 @@ export const checkToken = () => {
     credentials: 'include',
   })
   .then((res) => {
+  console.log(res.ok);
     if (res.ok) {
+
       return res.json();
     }
   })

@@ -150,7 +150,7 @@ function App() {
         SetGetError(true);
         console.log(error);
       });
-  }, []);
+  }, [isLogIn]);
 
   useEffect(() => {
     if (isLogIn) {

@@ -24,7 +24,8 @@ function Login(props) {
     event.preventDefault();
     setIsValid(false);
     authorize(formValues.accountEmail, formValues.accountPassword)
-      .then(() => {
+    .then(() => {
+        console.log(formValues.accountEmail, formValues.accountPassword);
         props.handleSignin();
         props.SetInfoPopupText("Вход выполнен успешно!");
         navigate("/movies", { replace: true });
