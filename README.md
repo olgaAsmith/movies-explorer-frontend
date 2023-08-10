@@ -7,7 +7,7 @@
 
 
 **Ссылка на задеплоенный на сервере проект:**
-**http://moviepoisk.nomoredomains.xyz**
+**https://moviepoisk.nomoredomains.xyz**
 
 **Ссылка на пул реквест:**
 **https://github.com/olgaAsmith/movies-explorer-frontend/pull/2**
