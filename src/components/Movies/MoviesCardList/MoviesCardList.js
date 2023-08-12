@@ -15,8 +15,10 @@ function MoviesCardList(props) {
               key={movie.id || movie._id}
               {...movie}
               userMovieList={props.userMovieList}
+              setUserMovieList={props.setUserMovieList}
               saveMovie={props.saveMovie}
               deleteMovie={props.deleteMovie}
+              serverError={props.serverError}
             />
           );
         })}

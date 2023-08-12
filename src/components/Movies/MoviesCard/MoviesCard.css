@@ -4,8 +4,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  max-width: 1280px;
 }
 
 @media screen and (max-width: 768px){

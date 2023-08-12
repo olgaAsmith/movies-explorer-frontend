@@ -33,7 +33,7 @@ function Login(props) {
       })
       .catch((error) => {
         props.handleInfoPopup(false);
-        if (error.message.includes("Ошибка авторизации")) {
+        if (error === 401) {
           props.SetInfoPopupText("Вы ввели неправильный логин или пароль");
         } else {
           props.SetInfoPopupText("При авторизации произошла ошибка");

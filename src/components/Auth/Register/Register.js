@@ -29,30 +29,33 @@ function Register(props) {
       formValues.accountEmail,
       formValues.accountPassword,
     )
-      .then((res) => {
-        if (!res.message) {
-          authorize(formValues.accountEmail, formValues.accountPassword)
-            .then(() => {
-              navigate("/movies", { replace: true });
-              props.handleInfoPopup(true);
-              props.SetInfoPopupText("Регистрация прошла успешно!");
-              props.handleSignin();
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else if (
-          res.message === "Пользователь с такими данными уже существует"
-        ) {
-          props.handleInfoPopup(false);
-          props.SetInfoPopupText("Пользователь с таким email уже существует");
-        }
+      .then(() => {
+        authorize(formValues.accountEmail, formValues.accountPassword)
+          .then(() => {
+            props.handleSignin();
+            props.SetInfoPopupText("Регистрация прошла успешно!");
+            navigate("/movies", { replace: true });
+            props.handleInfoPopup(true);
+          })
+          .catch((error) => {
+            props.handleInfoPopup(false);
+            if (error === 401) {
+              props.SetInfoPopupText("Вы ввели неправильный логин или пароль");
+            } else {
+              props.SetInfoPopupText("При авторизации произошла ошибка");
+            }
+          });
         setIsValid(true);
       })
       .catch((error) => {
-        console.log(error);
         props.handleInfoPopup(false);
-        props.SetInfoPopupText("При регистрации пользователя произошла ошибка");
+        if (error === 409) {
+          props.SetInfoPopupText("Пользователь с таким email уже существует");
+        } else {
+          props.SetInfoPopupText(
+            "При регистрации пользователя произошла ошибка",
+          );
+        }
       });
   };
 

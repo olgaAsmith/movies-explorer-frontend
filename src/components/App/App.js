@@ -39,7 +39,9 @@ function App() {
   //*sending error to user
   const serverError = () => {
     handleInfoPopup(false);
-    SetInfoPopupText("На сервере произошла ошибка");
+    SetInfoPopupText(
+      "Извините, операция не может быть выполнена. Сервер не отвечает.",
+    );
   };
 
   //*Login
@@ -72,7 +74,6 @@ function App() {
         }
       })
       .catch((error) => {
-        serverError();
         console.log(error);
       });
   }, [isLogIn]);
@@ -108,33 +109,6 @@ function App() {
         } else {
           SetInfoPopupText("При обновлении профиля произошла ошибка.");
         }
-        console.log(error);
-      });
-  };
-
-  //* movies
-  const saveMovie = (movie) => {
-    api
-      .saveMovie(movie)
-      .then((newMovie) => {
-        setUserMovieList([...userMovieList, newMovie]);
-      })
-      .catch((error) => {
-        serverError();
-        console.log(error);
-      });
-  };
-
-  const deleteMovie = (movie) => {
-    api
-      .deleteMovie(movie._id)
-      .then(() => {
-        setUserMovieList((list) =>
-          list.filter((item) => item._id !== movie._id),
-        );
-      })
-      .catch((error) => {
-        serverError();
         console.log(error);
       });
   };
@@ -242,12 +216,6 @@ function App() {
                 movies={movies}
                 numberOfMovies={numberOfMovies}
                 clickOnMoreMovies={clickOnMoreMovies}
-                saveMovie={(movie) => {
-                  saveMovie(movie);
-                }}
-                deleteMovie={(movie) => {
-                  deleteMovie(movie);
-                }}
                 userMovieList={userMovieList}
                 moviesLength={moviesLength}
                 handleInfoPopup={handleInfoPopup}
@@ -257,6 +225,9 @@ function App() {
                 serverMovies={serverMovies}
                 setMoviesLength={setMoviesLength}
                 getError={getError}
+                serverError={() => {
+                  serverError();
+                }}
               />
             }
           />
@@ -268,11 +239,11 @@ function App() {
                 isLogIn={isLogIn}
                 movies={userMovieList}
                 clickOnMoreMovies={clickOnMoreMovies}
-                deleteMovie={(movie) => {
-                  deleteMovie(movie);
-                }}
                 userMovieList={userMovieList}
                 setUserMovieList={setUserMovieList}
+                serverError={() => {
+                  serverError();
+                }}
               />
             }
           />

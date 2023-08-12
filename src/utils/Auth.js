@@ -8,14 +8,13 @@ export const registration = (name, email, password) => {
     },
     credentials: "include",
     body: JSON.stringify({ name, email, password }),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => console.log(err));
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(res.status);
+    }
+  });
 };
 
 export const authorize = (email, password) => {
@@ -26,17 +25,13 @@ export const authorize = (email, password) => {
     },
     credentials: "include",
     body: JSON.stringify({ email, password }),
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error("Ошибка авторизации");
-      }
-    })
-    .catch((err) => {
-      throw err;
-    });
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(res.status);
+    }
+  });
 };
 
 export const checkToken = () => {
@@ -46,13 +41,13 @@ export const checkToken = () => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .catch((err) => console.log(err));
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(res.status);
+    }
+  });
 };
 
 export const logout = () => {
@@ -62,11 +57,11 @@ export const logout = () => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .catch((err) => console.log(err));
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(res.status);
+    }
+  });
 };

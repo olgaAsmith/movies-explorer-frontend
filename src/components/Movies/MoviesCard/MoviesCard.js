@@ -1,14 +1,44 @@
 import React from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
+import { api } from "../../../utils/MainApi";
+import { useEffect, useState } from "react";
 
 function MoviesCard(props) {
   const location = useLocation();
 
-  const [isSave, SetIsSave] = React.useState(false);
+  const [isSave, SetIsSave] = useState(false);
+
+  //* movies
+  const saveMovie = (movie) => {
+    api
+      .saveMovie(movie)
+      .then((newMovie) => {
+        props.setUserMovieList([...props.userMovieList, newMovie]);
+        SetIsSave(true);
+      })
+      .catch((error) => {
+        props.serverError();
+        console.log(error);
+      });
+  };
+  const deleteMovie = (movie) => {
+    api
+      .deleteMovie(movie._id)
+      .then(() => {
+        props.setUserMovieList((list) =>
+          list.filter((item) => item._id !== movie._id),
+        );
+        SetIsSave(false);
+      })
+      .catch((error) => {
+        props.serverError();
+        console.log(error);
+      });
+  };
 
   //* match id movies
-  React.useEffect(() => {
+  useEffect(() => {
     props.userMovieList.some((movie) => {
       if (movie.movieId === props.id) {
         SetIsSave(true);
@@ -41,20 +71,17 @@ function MoviesCard(props) {
         nameRU: props.nameRU,
         nameEN: props.nameEN,
       };
-      props.saveMovie(movie);
-      SetIsSave(true);
+      saveMovie(movie);
     } else {
       const findMovie = props.userMovieList.find(
         (movie) => movie.movieId === props.id,
       );
-      props.deleteMovie(findMovie);
-      SetIsSave(false);
+      deleteMovie(findMovie);
     }
   };
 
   const handleDeleteClick = () => {
-    props.deleteMovie(props);
-    SetIsSave(false);
+    deleteMovie(props);
   };
 
   const openTrailer = () => {
