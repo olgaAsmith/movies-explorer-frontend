@@ -22,6 +22,7 @@ function MoviesCardList(props) {
             />
           );
         })}
+      {console.log(props.shortsLength)}
       </ul>
       <button
         className={`button ${

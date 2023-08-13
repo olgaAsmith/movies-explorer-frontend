@@ -7,10 +7,9 @@ import Preloader from "../Preloader/Preloader";
 function Movies(props) {
   const [searchInput, SetSearchInput] = useState("");
   const [isChecked, setIsChecked] = useState(true);
-  const [withoutShortMovies, setWithoutShortMovies] = useState([]);
+  const [shortMovies, setShortMovies] = useState([]);
   const [isFoundMovies, SetIsFoundMovies] = useState(true);
   const [isLoading, SetIsLoading] = useState(false);
-
   useEffect(() => {
     if (localStorage.length === 0) {
       return;
@@ -24,24 +23,28 @@ function Movies(props) {
   }, []);
 
   useEffect(() => {
-    const filteredMovies = props.movies.filter((movie) => movie.duration > 40);
-    props.setMoviesLength(filteredMovies.length);
-    setWithoutShortMovies([...filteredMovies]);
-  }, [isChecked, props.movies, setWithoutShortMovies]);
+    if(isChecked) {
+      const filtredShortMovies = props.movies.filter((movie) => movie.duration <= 40);
+      props.setMoviesLength(filtredShortMovies.length);
+      setShortMovies([...filtredShortMovies]);
+    } else {
+      props.setMoviesLength(props.movies.length);
+    }
+  }, [isChecked, props.movies, setShortMovies]);
 
   const movies = isChecked
-    ? props.movies.slice(0, props.numberOfMovies)
-    : withoutShortMovies.slice(0, props.numberOfMovies);
+    ? shortMovies.slice(0, props.numberOfMovies)
+    : props.movies.slice(0, props.numberOfMovies);
   const errorText = props.getError
     ? "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
     : "Ничего не найдено";
+
   return (
     <section className="movies">
       <SearchForm
         {...props}
         searchInput={searchInput}
         isChecked={isChecked}
-        withoutShortMovies={withoutShortMovies}
         setIsChecked={setIsChecked}
         SetSearchInput={SetSearchInput}
         SetIsFoundMovies={SetIsFoundMovies}
@@ -50,7 +53,9 @@ function Movies(props) {
       {isLoading ? (
         <Preloader />
       ) : (
-        <MoviesCardList {...props} movies={movies} />
+        <MoviesCardList {...props}
+        movies={movies}
+        />
       )}
       {isFoundMovies ? "" : <p className="error">{errorText}</p>}
     </section>
