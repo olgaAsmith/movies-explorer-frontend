@@ -66,6 +66,18 @@
   padding: 0 15px;
 }
 
+.auth__input:focus {
+  outline: none;
+}
+
+.auth__input_red:focus {
+  border: 2px solid #EE3465;
+}
+
+.auth__input_green:focus {
+  box-shadow: 0 0 0 1px #3DDC84;
+}
+
 .auth__input-error {
   color: #EE3465;
   font-family: Inter;
@@ -90,6 +102,15 @@
   }
 }
 
+.button_disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: not-allowed;
+}
+
+.auth__button_disabled:hover {
+  opacity: 1;
+}
 .auth__footer {
   display: flex;
   justify-content: center;

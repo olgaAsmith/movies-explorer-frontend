@@ -11,6 +11,7 @@
   opacity: 0;
   transform: scale(0);
   transition: .8s ease-out;
+  z-index: 100;
 }
 
 .popup_opened {

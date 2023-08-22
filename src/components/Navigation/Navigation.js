@@ -4,8 +4,6 @@ import { useLocation, Link, NavLink } from "react-router-dom";
 
 function Navigation(props) {
   const location = useLocation();
-  const handleCurrentLink = (isActive) =>
-    isActive ? "header__menu-link_active" : "";
 
   return (
     <div className="header__menu">
@@ -13,10 +11,7 @@ function Navigation(props) {
         className="logo link header__logo"
         to={location.pathname === "/" ? "#!" : "/"}
       ></Link>
-      {/* {props.isLogIn ? ( */}
-      {location.pathname === "/movies" ||
-      location.pathname === "/saved-movies" ||
-      location.pathname === "/profile" ? (
+      {props.isLogIn ? (
         <nav
           className={`header__menu-wrapper ${
             props.isBurgerMenuOpen ? "header__menu-wrapper_active" : ""
@@ -60,10 +55,7 @@ function Navigation(props) {
           </NavLink>
         </div>
       )}
-      {/* {props.isLogIn ? ( */}
-      {location.pathname === "/movies" ||
-      location.pathname === "/saved-movies" ||
-      location.pathname === "/profile" ? (
+      {props.isLogIn ? (
         <div
           className={`header__menu-burger ${
             props.isBurgerMenuOpen ? "header__menu-burger_active" : ""

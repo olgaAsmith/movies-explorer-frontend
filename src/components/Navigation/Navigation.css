@@ -258,6 +258,7 @@ display: flex;
 @media screen and (max-width: 768px){
   .header__menu-burger {
     display: block;
+    cursor: pointer;
     position: relative;
     box-sizing: border-box;
     width: 28px;
@@ -288,4 +289,8 @@ display: flex;
   }
 }
 
-
+.header__menu-link_exit {
+  color: rgb(188, 129, 129);
+  background-color: transparent;
+  border: 0;
+}

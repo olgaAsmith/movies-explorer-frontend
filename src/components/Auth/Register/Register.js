@@ -1,10 +1,62 @@
 import React from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { registration, authorize } from "../../../utils/Auth";
+import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Register(props) {
+  const navigate = useNavigate();
+  const [formValues, setformValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  //*validation
+  const handleChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setformValues({ ...formValues, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
+    setIsValid(target.closest("form").checkValidity());
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsValid(false);
+    registration(
+      formValues.accountName,
+      formValues.accountEmail,
+      formValues.accountPassword,
+    )
+      .then(() => {
+        authorize(formValues.accountEmail, formValues.accountPassword)
+          .then(() => {
+            props.handleSignin();
+            props.SetInfoPopupText("Регистрация прошла успешно!");
+            navigate("/movies", { replace: true });
+            props.handleInfoPopup(true);
+          })
+          .catch((error) => {
+            props.handleInfoPopup(false);
+            if (error === 401) {
+              props.SetInfoPopupText("Вы ввели неправильный логин или пароль");
+            } else {
+              props.SetInfoPopupText("При авторизации произошла ошибка");
+            }
+          });
+        setIsValid(true);
+      })
+      .catch((error) => {
+        props.handleInfoPopup(false);
+        if (error === 409) {
+          props.SetInfoPopupText("Пользователь с таким email уже существует");
+        } else {
+          props.SetInfoPopupText(
+            "При регистрации пользователя произошла ошибка",
+          );
+        }
+      });
   };
 
   return (
@@ -21,47 +73,63 @@ function Register() {
       >
         <p className="text auth__input-info">Имя</p>
         <input
-          className="input auth__input"
+          className={`input auth__input ${
+            errors.accountName ? "auth__input_red" : "auth__input_green"
+          }`}
           type="text"
           id="popup-input-name"
-          name="accountEmail"
+          name="accountName"
           placeholder="Ваше имя"
           minLength="2"
           maxLength="40"
+          onChange={handleChange}
+          pattern="^[A-Za-zА-Яа-яЁё\s\-]+$"
         ></input>
-        <span
-          className="text auth__input-error"
-          id="popup-input-name-error"
-        ></span>
+        <span className="text auth__input-error" id="popup-input-name-error">
+          {errors.accountName}
+        </span>
         <p className="text auth__input-info">E-mail</p>
         <input
-          className="input input auth__input"
+          className={`input auth__input ${
+            errors.accountEmail ? "auth__input_red" : "auth__input_green"
+          }`}
           type="email"
           id="popup-input-email"
           name="accountEmail"
           placeholder="Ваш email"
           required
+          onChange={handleChange}
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
         ></input>
-        <span
-          className="text auth__input-error"
-          id="popup-input-email-error"
-        ></span>
+        <span className="text auth__input-error" id="popup-input-email-error">
+          {errors.accountEmail}
+        </span>
         <p className="text auth__input-info">Пароль</p>
         <input
-          className="input auth__input"
+          className={`input auth__input ${
+            errors.accountPassword ? "auth__input_red" : "auth__input_green"
+          }`}
           type="password"
           id="popup-input-password"
           name="accountPassword"
           placeholder="Ваш пароль"
-          minLength="2"
+          minLength="4"
           maxLength="40"
           required
+          onChange={handleChange}
         ></input>
         <span
           className="text auth__input-error"
           id="popup-input-password-error"
-        ></span>
-        <button className="button button_blue auth__button" type="submit">
+        >
+          {errors.accountPassword}
+        </span>
+        <button
+          className={`button button_blue auth__button ${
+            isValid ? "" : "button_disabled"
+          }`}
+          type="submit"
+        >
           Зарегистрироваться
         </button>
         <div className="auth__footer">

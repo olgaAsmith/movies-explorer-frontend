@@ -1,0 +1,8 @@
+.error{
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #EE3465;
+  font-size: 26px;
+  text-transform: uppercase;
+}
