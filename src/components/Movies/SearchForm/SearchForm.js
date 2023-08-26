@@ -5,56 +5,64 @@ import { useLocation } from "react-router-dom";
 
 function SearchForm(props) {
   const location = useLocation();
-  const searchInput = props.searchInput;
-  const isChecked = props.isChecked;
 
   //& submit user movies
-  const handleSubmitSavedMovies = (event) => {
+  const handleSubmitSavedMovies = async (event) => {
     event.preventDefault();
+    props.SetIsFoundMovies(true);
     props.SetIsLoading(true);
-    const searchingMovies = props.userMovieList.filter(
-      (movie) =>
-        movie.nameRU.toLowerCase().includes(props.searchInput.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(props.searchInput.toLowerCase()),
-    );
-    props.setUserMovieList([...searchingMovies]);
-    if (searchingMovies.length === 0) {
-      props.SetIsFoundMovies(false);
-    }
-    setTimeout(() => {
+    try {
+      const searchingMovies = props.userMovieList.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(props.searchInput.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(props.searchInput.toLowerCase())
+      );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      props.setSearchedMovies([...searchingMovies]);
+      props.setIsSearchFilter(true);
       props.SetIsLoading(false);
-    }, 2000);
-  };
 
-  //& submit beatmovies
-  const handleSubmitMovies = (event) => {
-    event.preventDefault();
-    props.SetIsLoading(true);
-    const searchingMovies = props.serverMovies.filter(
-      (movie) =>
-        movie.nameRU.toLowerCase().includes(props.searchInput.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(props.searchInput.toLowerCase()),
-    );
-    if (!props.searchInput) {
-      props.handleInfoPopup(false);
-      props.SetInfoPopupText("Нужно ввести ключевое слово");
-    } else {
-      const lastSearch = {
-        searchInput,
-        isChecked,
-        searchingMovies,
-      };
-      localStorage.setItem("lastSearch", JSON.stringify(lastSearch));
-      props.setMovies([...searchingMovies]);
       if (searchingMovies.length === 0) {
         props.SetIsFoundMovies(false);
       }
+    } catch (error) {
+      console.error("error", error);
     }
-    props.setMovies([...searchingMovies]);
-    setTimeout(() => {
-      props.SetIsLoading(false);
-    }, 2000);
   };
+
+  //& submit beatmovies
+  const handleSubmitMovies = async (event) => {
+    event.preventDefault();
+    props.SetIsFoundMovies(true);
+    props.SetIsLoading(true);
+    try {
+      const searchingMovies = props.serverMovies.filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(props.searchInput.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(props.searchInput.toLowerCase())
+      );
+      if (!props.searchInput) {
+        props.handleInfoPopup(true);
+        props.SetInfoPopupText("Нужно ввести ключевое слово");
+      } else {
+        const lastSearch = {
+          searchInput: props.searchInput,
+          isChecked: props.isChecked,
+          searchingMovies,
+        };
+        localStorage.setItem("lastSearch", JSON.stringify(lastSearch));
+        props.setMovies([...searchingMovies]);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      props.SetIsLoading(false);
+      if (searchingMovies.length === 0) {
+        props.SetIsFoundMovies(false);
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
+
 
   //*toogle butt
   const handleCheckboxChecked = (event) => {
