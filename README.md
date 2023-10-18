@@ -1,4 +1,4 @@
-# BACKEND MOVIEPOISK
+# FRONTEND MOVIEPOISK
 #### Дипломный проект Yandex Web Development
 ----
 ##### В проекте реализовано: 
